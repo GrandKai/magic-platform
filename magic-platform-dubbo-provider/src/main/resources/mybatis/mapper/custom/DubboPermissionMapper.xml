@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magic.platform.dubbo.provider.business.mapper.custom.dao.DubboPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.magic.platform.dubbo.dto.PermissionDto">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="url" jdbcType="VARCHAR" property="url"/>
+    <result column="operation_id" jdbcType="VARCHAR" property="operationId"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    <result column="sort_number" jdbcType="SMALLINT" property="sortNumber"/>
+  </resultMap>
+
+  <select id="selectAllGrantedPermissions" parameterType="java.lang.String" resultType="java.lang.String">
+
+    select p.url from user_role ur
+       inner join user u on ur.user_id = u.id
+       inner join role_authority ra on ur.role_id = ra.role_id
+       inner join authority_operation ao on ao.authority_id = ra.authority_id
+       inner join permission p on p.operation_id = ao.operation_id
+    where u.name = #{userName}
+    group by p.url
+
+  </select>
+</mapper>

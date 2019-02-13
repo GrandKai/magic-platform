@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>magic-platform-parent</artifactId>
+    <groupId>com.magic</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath/>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>war</packaging>
+
+  <artifactId>magic-platform-dubbo-provider</artifactId>
+
+  <properties>
+  </properties>
+
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <logger.level>debug</logger.level>
+        <logger.file.path>/opt/logs/${project.parent.artifactId}/${project.artifactId}
+        </logger.file.path>
+      </properties>
+      <build>
+        <filters>
+          <filter>config/dev/dubbo.properties</filter>
+          <filter>config/dev/framework.properties</filter>
+          <filter>config/dev/http.properties</filter>
+          <filter>config/dev/mongo.properties</filter>
+          <filter>config/dev/mysql.properties</filter>
+          <filter>config/dev/mysql-slave.properties</filter>
+          <filter>config/dev/rabbit.properties</filter>
+          <filter>config/dev/redis.properties</filter>
+        </filters>
+      </build>
+    </profile>
+  </profiles>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.ctrip.framework.apollo</groupId>
+      <artifactId>apollo-client</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jongo</groupId>
+      <artifactId>jongo</artifactId>
+    </dependency>
+
+    <!--<dependency>-->
+      <!--<groupId>mysql</groupId>-->
+      <!--<artifactId>mysql-connector-java</artifactId>-->
+      <!--<scope>compile</scope>-->
+    <!--</dependency>-->
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+
+    <!-- 阿里巴巴开发库 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>dubbo</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+    </dependency>
+
+    <!-- dubbo 依赖字节码处理包 -->
+    <dependency>
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.curator</groupId>
+      <artifactId>curator-recipes</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.101tec</groupId>
+      <artifactId>zkclient</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.zookeeper</groupId>
+          <artifactId>zookeeper</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.zookeeper</groupId>
+      <artifactId>zookeeper</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>com.magic</groupId>
+      <artifactId>magic-platform-entity</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.magic</groupId>
+      <artifactId>magic-platform-dubbo</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.magic</groupId>
+      <artifactId>magic-platform-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.magic</groupId>
+      <artifactId>magic-platform-util</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.magic</groupId>
+      <artifactId>magic-platform-framework</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.magic</groupId>
+      <artifactId>magic-platform-support</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <!-- spring boot start start -->
+
+    <!--<dependency>
+        <groupId>com.alibaba.boot</groupId>
+        <artifactId>dubbo-spring-boot-starter</artifactId>
+    </dependency>-->
+
+
+    <!-- MongoDB Starter -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
+    </dependency>
+
+    <!-- Spring Boot AMQP Starter -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-amqp</artifactId>
+    </dependency>
+
+    <!-- Spring Boot AOP Starter -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+    <!-- spring boot start end -->
+
+    <!--mybatis-->
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+    </dependency>
+
+    <!--mapper-->
+    <dependency>
+      <groupId>tk.mybatis</groupId>
+      <artifactId>mapper-spring-boot-starter</artifactId>
+    </dependency>
+
+    <!--pagehelper-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper-spring-boot-starter</artifactId>
+    </dependency>
+
+    <!-- JSON 处理-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+    </dependency>
+
+    <!-- jwt -->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+    </dependency>
+
+    <!-- Swagger Core -->
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.deepoove</groupId>
+      <artifactId>swagger-dubbo</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>swagger-ui</artifactId>
+    </dependency>
+
+    <!-- net -->
+    <dependency>
+      <groupId>commons-net</groupId>
+      <artifactId>commons-net</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+    </dependency>
+
+
+    <!-- Apache 常用开发包 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- SpringBoot打WAR包插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <!--<configuration>
+          &lt;!&ndash;<webResources></webResources>&ndash;&gt;
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>-->
+      </plugin>
+
+      <!-- 编译插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${java.version}</source><!-- 源代码使用的开发版本 -->
+          <target>${java.version}</target><!-- 生成的目标class文件的编译版本 -->
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- SpringBoot打包发布插件 -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${springboot.version}</version>
+        <configuration>
+          <!-- 设置程序执行的主类 -->
+          <mainClass>com.magic.platform.DubboProviderApplication</mainClass>
+          <!--<fork>true</fork>-->
+        </configuration>
+        <!--<executions>-->
+        <!--<execution>-->
+        <!--<goals>-->
+        <!--<goal>repackage</goal>-->
+        <!--</goals>-->
+        <!--</execution>-->
+        <!--</executions>-->
+      </plugin>
+    </plugins>
+
+    <!-- 资源目录 -->
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <!-- 使用pom文件中的属性替换properties文件中的占位符 -->
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
+</project>

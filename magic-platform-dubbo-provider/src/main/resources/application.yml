@@ -1,0 +1,22 @@
+server:
+  port: 8087
+
+spring:
+  profiles:
+    active: dev
+framework:
+  config:
+    mysql:
+      slave: true
+    activiti:
+      enable: true
+    dubbo:
+      enable: true
+    rabbit:
+      enable: true
+    mongo:
+      enable: true
+    swagger:
+      enable: true
+      scan-package: com.magic.platform
+#      filters: stat,config

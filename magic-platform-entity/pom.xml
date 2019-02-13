@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>magic-platform-parent</artifactId>
+        <groupId>com.magic</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+
+    <artifactId>magic-platform-entity</artifactId>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <!--  MyBatis Generator  -->
+        <!--  Java接口和实体类  -->
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetMapperPackage>com.magic.platform.entity.mapper.build.dao</targetMapperPackage>
+        <targetModelPackage>com.magic.platform.entity.mapper.build.entity</targetModelPackage>
+        <!--  XML生成路径  -->
+        <targetXMLPackage>mybatis.mapper.build</targetXMLPackage>
+        <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+
+        <!--  依赖版本  -->
+        <!--<mapper.version>3.5.3</mapper.version>-->
+        <!--<mysql.version>8.0.11</mysql.version>-->
+        <!--<mysql.version>5.1.42</mysql.version>-->
+        <!--<mybatis.generator.version>1.3.5</mybatis.generator.version>-->
+
+        <!--通用Mapper配置-->
+        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
+        <mapper.Mapper>com.magic.platform.entity.mapper.build.BaseMapper</mapper.Mapper>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+
+                <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>
+                <jdbc.connectionURL>jdbc:mysql://localhost:3306/auth?useUnicode=true&amp;amp;characterEncoding=utf8</jdbc.connectionURL>
+                <jdbc.userId>root</jdbc.userId>
+                <jdbc.password>mysql</jdbc.password>
+
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <!-- 以下依赖主要用于通过 java 依赖，通过代码生成而不是插件-->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--通用Mapper -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis.generator.version}</version>
+                <configuration>
+                    <configurationFile>
+                        src/main/resources/mybatis/generatorConfig.xml
+                    </configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>${mapper.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+
+        <!-- 使用资源过滤器 -->
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

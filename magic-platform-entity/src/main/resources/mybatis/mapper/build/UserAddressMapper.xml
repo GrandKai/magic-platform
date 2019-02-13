@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magic.platform.entity.mapper.build.dao.UserAddressMapper">
+  <resultMap id="BaseResultMap" type="com.magic.platform.entity.mapper.build.entity.UserAddress">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="recipient" jdbcType="VARCHAR" property="recipient" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="is_default" jdbcType="CHAR" property="isDefault" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magic.platform.entity.mapper.build.dao.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.magic.platform.entity.mapper.build.entity.Menu">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="plat_id" jdbcType="VARCHAR" property="platId" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="router" jdbcType="VARCHAR" property="router" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="is_leaf" jdbcType="CHAR" property="isLeaf" />
+    <result column="is_deleted" jdbcType="CHAR" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="sort_number" jdbcType="SMALLINT" property="sortNumber" />
+    <result column="is_show" jdbcType="CHAR" property="isShow" />
+  </resultMap>
+</mapper>
