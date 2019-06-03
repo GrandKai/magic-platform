@@ -1,20 +1,20 @@
 package com.magic.platform.framework.aop;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.magic.platform.core.anotation.OpsLog;
-import com.magic.platform.core.anotation.OpsLogType;
-import com.magic.platform.util.IpUtil;
-import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -34,7 +34,66 @@ public class OpsLogAspect {
   }
 
 
-  @AfterReturning(pointcut = "opsLogAnnotation()", returning = "object")
+  /**
+   * 在切点之前织入
+   */
+  @Before(value = "opsLogAnnotation()")
+  public void doBefore(JoinPoint joinPoint) throws Throwable {
+
+    ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+    HttpServletRequest request = attributes.getRequest();
+
+    // 获取方法的签名
+    MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+    OpsLog opsLog = methodSignature.getMethod().getAnnotation(OpsLog.class);
+    String opsTypes = Arrays.toString(opsLog.type());
+
+    String description = opsLog.type().length > 0 ? opsLog.value() + ", " + opsTypes : opsLog.value();
+
+    // 打印请求相关参数
+    log.info(
+        "========================================== Start ==========================================");
+    // 打印请求 url
+    log.info("URL            : {}", request.getRequestURL().toString());
+    // 打印描述信息
+    log.info("Description    : {}", description);
+    // 打印 Http method
+    log.info("HTTP Method    : {}", request.getMethod());
+
+    String args = Arrays.toString(joinPoint.getArgs());
+    // 打印调用 controller 的全路径以及执行方法
+    log.info("Class Method   : {}.{}({})", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName(), args.substring(1, args.length() - 1));
+    // 打印请求的 IP
+    log.info("IP             : {}", request.getRemoteAddr());
+    // 打印请求入参
+    log.info("Request Args   : {}", JSONArray.toJSONString(joinPoint.getArgs()));
+
+  }
+
+  @After("opsLogAnnotation()")
+  public void doAfter() throws Throwable {
+    // 接口结束后换行，方便分割查看
+    log.info(
+        "=========================================== End ==========================================="
+            + System.lineSeparator());
+  }
+
+  @Around("opsLogAnnotation()")
+  public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    long startTime = System.currentTimeMillis();
+    Object result = proceedingJoinPoint.proceed();
+
+    // 打印出参
+    log.info("Response Args  : {}", JSON.toJSONString(result));
+    // 执行耗时
+    log.info("Time-Consuming : {} ms", System.currentTimeMillis() - startTime);
+    return result;
+  }
+
+
+
+
+  /*@AfterReturning(pointcut = "opsLogAnnotation()", returning = "object")
   public void doAfterReturning(JoinPoint joinPoint, Object object) {
 
     // 获取方法的签名
@@ -72,7 +131,7 @@ public class OpsLogAspect {
     opsLogEntity.setCreateTime(new Date());
     opsLogEntity.setEnvironment("");
 
-    log.info("操作日志信息实体：", opsLogEntity.toString());
+    log.info("操作日志信息实体：{}", opsLogEntity.toString());
 
-  }
+  }*/
 }
