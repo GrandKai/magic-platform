@@ -2,6 +2,7 @@ package com.magic.platform.dubbo.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -69,4 +70,9 @@ public class MenuDto implements Serializable {
      * 是否显示（1：是，0：否）
      */
     private String isShow;
+
+    /**
+     * 操作按钮集合
+     */
+    private List<OperationDto> operationList;
 }

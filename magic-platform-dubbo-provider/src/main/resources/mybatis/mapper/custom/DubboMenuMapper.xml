@@ -17,6 +17,34 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="sort_number" jdbcType="SMALLINT" property="sortNumber" />
     <result column="is_show" jdbcType="CHAR" property="isShow" />
+
+
+    <collection property="operationList" ofType="OperationDto"
+      column="{menuId=id,userNamep=userName}"
+      select="selectOperationsByMenuId" fetchType="eager"/>
+  </resultMap>
+
+  <resultMap id="OperationDto" type="com.magic.platform.dubbo.dto.OperationDto">
+    <id column="id" property="id"/>
+    <id column="menu_id" property="menuId"/>
+    <id column="name" property="name"/>
+    <id column="type" property="type"/>
+    <id column="sort_number" property="sortNumber"/>
+
+    <collection property="permissionList" ofType="PermissionDto"
+      column="id"
+      select="selectPermissionsByOperationId" fetchType="eager"/>
+  </resultMap>
+
+  <resultMap id="PermissionDto" type="com.magic.platform.dubbo.dto.PermissionDto">
+
+    <id column="id" property="id"/>
+    <id column="name" property="name"/>
+    <id column="url" property="url"/>
+    <id column="operation_id" property="operationId"/>
+    <id column="type" property="type"/>
+    <id column="sort_number" property="sortNumber"/>
+
   </resultMap>
 
   <select id="selectAllGrantedMenus" resultMap="BaseResultMap">
@@ -44,5 +72,34 @@
            tmp on tmp.authority_id = t.authority_id
     group by m.id having m.is_deleted = '0' and m.is_show = '1'
     order by m.sort_number asc, m.update_time desc
+  </select>
+
+
+  <select id="selectOperationsByMenuId" parameterMap="java.util.Map" resultMap="OperationDto">
+        SELECT  DISTINCT
+            o.id,
+            o.menu_id,
+            o.name,
+            o.type,
+            o.sort_number
+        FROM operation o
+          INNER JOIN authority_operation po ON po.operate_id = o.id
+          INNER JOIN authority p ON po.authority_id = p.id
+          INNER JOIN role_authority rp ON rp.authority_id = p.id
+          INNER JOIN role r ON rp.role_id = r.id
+          INNER JOIN user_role ur on r.id = ur.role_id
+          INNER JOIN user u on ur.user_id = u.id
+        where u.name = #{userNamep} AND menu_id = #{menuId} order by o.sort_number
+  </select>
+
+  <select id="selectPermissionsByOperationId" parameterMap="java.util.Map" resultMap="PermissionDto">
+    SELECT
+      id,
+      name,
+      url,
+      operation_id,
+      type,
+      sort_number
+    FROM operation_child  WHERE parent_id = #{id} order by sort_number
   </select>
 </mapper>
