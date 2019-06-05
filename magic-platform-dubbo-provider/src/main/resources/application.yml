@@ -9,11 +9,11 @@ framework:
     mysql:
       slave: true
     activiti:
-      enable: true
+      enable: false
     dubbo:
       enable: true
     rabbit:
-      enable: true
+      enable: false
     mongo:
       enable: true
     swagger:

@@ -25,10 +25,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-  @Autowired
+  @Autowired(required = false)
   private MongoTemplate mongoTemplate;
 
-  @Autowired
+  @Autowired(required = false)
   private OpsLogRepository opsLogRepository;
 
   @GetMapping("/mongo")

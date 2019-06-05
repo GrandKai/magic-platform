@@ -30,18 +30,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProcessDefinitionsController {
 
-  @Autowired
+  @Autowired(required = false)
   RepositoryService repositoryService;
-  @Autowired
+  @Autowired(required = false)
   RuntimeService runtimeService;
 
-  @Autowired
+  @Autowired(required = false)
   ManagementService managementService;
 
-  @Autowired
+  @Autowired(required = false)
   DynamicBpmnService dynamicBpmnService;
 
-  @Autowired
+  @Autowired(required = false)
   TaskService taskService;
 
 
