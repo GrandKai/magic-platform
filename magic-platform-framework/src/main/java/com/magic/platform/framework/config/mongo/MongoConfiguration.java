@@ -27,12 +27,18 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * @Modified By:
  */
 @Configuration
-@EnableMongoRepositories(basePackages = {MongoConfiguration.BASE_PACKAGES})
 @EnableConfigurationProperties(MongoDbProperties.class)
 @ConditionalOnExpression("${framework.config.mongo.enable: false}")
 public class MongoConfiguration {
 
   public static final String BASE_PACKAGES = "com.magic.platform.**.mongo.dao";
+
+
+  @EnableMongoRepositories(basePackages = {MongoConfiguration.BASE_PACKAGES})
+  public static class MongoAutoConfig {
+
+  };
+
 
   @Autowired
   private MongoDbProperties mongoDbProperties;
