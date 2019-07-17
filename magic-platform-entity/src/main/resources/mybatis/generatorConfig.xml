@@ -82,14 +82,14 @@
         </javaClientGenerator>
 
         <!--tableName="%" 生成数据库中所有的表-->
-        <!--<table tableName="performance_info" domainObjectName="performanceInfo"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
+        <table tableName="cont_association" domainObjectName="ContAssociation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="cont_catalog" domainObjectName="ContCatalog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="cont_infomation" domainObjectName="ContInfomation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="cont_label" domainObjectName="ContLabel" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="cont_label_group" domainObjectName="ContLabelGroup" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
-        <table tableName="%">
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        </table>
+        <!--<table tableName="%">
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql" identity="true"/>&ndash;&gt;
+        </table>-->
     </context>
 </generatorConfiguration>
