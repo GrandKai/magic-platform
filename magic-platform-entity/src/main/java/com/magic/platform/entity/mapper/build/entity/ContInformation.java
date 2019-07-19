@@ -3,8 +3,8 @@ package com.magic.platform.entity.mapper.build.entity;
 import java.util.Date;
 import javax.persistence.*;
 
-@Table(name = "cont_infomation")
-public class ContInfomation {
+@Table(name = "cont_information")
+public class ContInformation {
     @Id
     private String id;
 
