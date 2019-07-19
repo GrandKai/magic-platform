@@ -82,10 +82,10 @@ public class ContInfomation {
     private Integer clickAmout;
 
     @Column(name = "create_time")
-    private String createTime;
+    private Date createTime;
 
     @Column(name = "update_time")
-    private String updateTime;
+    private Date updateTime;
 
     @Column(name = "is_deleted")
     private String isDeleted;
@@ -346,29 +346,29 @@ public class ContInfomation {
     /**
      * @return create_time
      */
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
     /**
      * @param createTime
      */
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime == null ? null : createTime.trim();
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     /**
      * @return update_time
      */
-    public String getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
     /**
      * @param updateTime
      */
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime == null ? null : updateTime.trim();
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     /**

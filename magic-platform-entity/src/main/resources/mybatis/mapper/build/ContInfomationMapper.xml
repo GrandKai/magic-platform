@@ -19,8 +19,8 @@
     <result column="validity_end_time" jdbcType="TIMESTAMP" property="validityEndTime" />
     <result column="publisher" jdbcType="VARCHAR" property="publisher" />
     <result column="click_amout" jdbcType="INTEGER" property="clickAmout" />
-    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
-    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="is_deleted" jdbcType="CHAR" property="isDeleted" />
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
