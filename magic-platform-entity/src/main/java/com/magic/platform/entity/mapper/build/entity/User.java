@@ -24,16 +24,10 @@ public class User {
     private String nickName;
 
     /**
-     * 是否启用（1：是，0：否）
+     * 员工id
      */
-    @Column(name = "is_enabled")
-    private String isEnabled;
-
-    /**
-     * 是否删除（1：是，0：否）
-     */
-    @Column(name = "is_deleted")
-    private String isDeleted;
+    @Column(name = "staff_id")
+    private String staffId;
 
     /**
      * 创建时间
@@ -46,6 +40,18 @@ public class User {
      */
     @Column(name = "update_time")
     private Date updateTime;
+
+    /**
+     * 是否启用（1：是，0：否）
+     */
+    @Column(name = "is_enabled")
+    private String isEnabled;
+
+    /**
+     * 是否删除（1：是，0：否）
+     */
+    @Column(name = "is_deleted")
+    private String isDeleted;
 
     /**
      * @return id
@@ -116,39 +122,21 @@ public class User {
     }
 
     /**
-     * 获取是否启用（1：是，0：否）
+     * 获取员工id
      *
-     * @return is_enabled - 是否启用（1：是，0：否）
+     * @return staff_id - 员工id
      */
-    public String getIsEnabled() {
-        return isEnabled;
+    public String getStaffId() {
+        return staffId;
     }
 
     /**
-     * 设置是否启用（1：是，0：否）
+     * 设置员工id
      *
-     * @param isEnabled 是否启用（1：是，0：否）
+     * @param staffId 员工id
      */
-    public void setIsEnabled(String isEnabled) {
-        this.isEnabled = isEnabled == null ? null : isEnabled.trim();
-    }
-
-    /**
-     * 获取是否删除（1：是，0：否）
-     *
-     * @return is_deleted - 是否删除（1：是，0：否）
-     */
-    public String getIsDeleted() {
-        return isDeleted;
-    }
-
-    /**
-     * 设置是否删除（1：是，0：否）
-     *
-     * @param isDeleted 是否删除（1：是，0：否）
-     */
-    public void setIsDeleted(String isDeleted) {
-        this.isDeleted = isDeleted == null ? null : isDeleted.trim();
+    public void setStaffId(String staffId) {
+        this.staffId = staffId == null ? null : staffId.trim();
     }
 
     /**
@@ -185,5 +173,41 @@ public class User {
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    /**
+     * 获取是否启用（1：是，0：否）
+     *
+     * @return is_enabled - 是否启用（1：是，0：否）
+     */
+    public String getIsEnabled() {
+        return isEnabled;
+    }
+
+    /**
+     * 设置是否启用（1：是，0：否）
+     *
+     * @param isEnabled 是否启用（1：是，0：否）
+     */
+    public void setIsEnabled(String isEnabled) {
+        this.isEnabled = isEnabled == null ? null : isEnabled.trim();
+    }
+
+    /**
+     * 获取是否删除（1：是，0：否）
+     *
+     * @return is_deleted - 是否删除（1：是，0：否）
+     */
+    public String getIsDeleted() {
+        return isDeleted;
+    }
+
+    /**
+     * 设置是否删除（1：是，0：否）
+     *
+     * @param isDeleted 是否删除（1：是，0：否）
+     */
+    public void setIsDeleted(String isDeleted) {
+        this.isDeleted = isDeleted == null ? null : isDeleted.trim();
     }
 }
