@@ -78,8 +78,8 @@ public class ContInformation {
     /**
      * 点击量
      */
-    @Column(name = "click_amout")
-    private Integer clickAmout;
+    @Column(name = "click_amount")
+    private Integer clickAmount;
 
     @Column(name = "create_time")
     private Date createTime;
@@ -328,19 +328,19 @@ public class ContInformation {
     /**
      * 获取点击量
      *
-     * @return click_amout - 点击量
+     * @return click_amount - 点击量
      */
-    public Integer getClickAmout() {
-        return clickAmout;
+    public Integer getClickAmount() {
+        return clickAmount;
     }
 
     /**
      * 设置点击量
      *
-     * @param clickAmout 点击量
+     * @param clickAmount 点击量
      */
-    public void setClickAmout(Integer clickAmout) {
-        this.clickAmout = clickAmout;
+    public void setClickAmount(Integer clickAmount) {
+        this.clickAmount = clickAmount;
     }
 
     /**
