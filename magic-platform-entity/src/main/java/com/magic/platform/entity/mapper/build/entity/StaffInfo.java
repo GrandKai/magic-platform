@@ -25,8 +25,8 @@ public class StaffInfo {
     /**
      * 所属组织机构名称
      */
-    @Column(name = "organizaiton_name")
-    private String organizaitonName;
+    @Column(name = "organization_name")
+    private String organizationName;
 
     /**
      * 创建时间
@@ -103,19 +103,19 @@ public class StaffInfo {
     /**
      * 获取所属组织机构名称
      *
-     * @return organizaiton_name - 所属组织机构名称
+     * @return organization_name - 所属组织机构名称
      */
-    public String getOrganizaitonName() {
-        return organizaitonName;
+    public String getOrganizationName() {
+        return organizationName;
     }
 
     /**
      * 设置所属组织机构名称
      *
-     * @param organizaitonName 所属组织机构名称
+     * @param organizationName 所属组织机构名称
      */
-    public void setOrganizaitonName(String organizaitonName) {
-        this.organizaitonName = organizaitonName == null ? null : organizaitonName.trim();
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName == null ? null : organizationName.trim();
     }
 
     /**

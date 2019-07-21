@@ -8,7 +8,7 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="organization_id" jdbcType="VARCHAR" property="organizationId" />
-    <result column="organizaiton_name" jdbcType="VARCHAR" property="organizaitonName" />
+    <result column="organization_name" jdbcType="VARCHAR" property="organizationName" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="is_enabled" jdbcType="CHAR" property="isEnabled" />

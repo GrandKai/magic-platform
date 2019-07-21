@@ -15,5 +15,6 @@
     <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="level" jdbcType="CHAR" property="level" />
   </resultMap>
 </mapper>

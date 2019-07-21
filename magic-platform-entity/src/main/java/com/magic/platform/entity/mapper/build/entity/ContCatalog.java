@@ -57,6 +57,11 @@ public class ContCatalog {
     private Date updateTime;
 
     /**
+     * 叶子深度
+     */
+    private String level;
+
+    /**
      * 获取栏目id
      *
      * @return id - 栏目id
@@ -226,5 +231,23 @@ public class ContCatalog {
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    /**
+     * 获取叶子深度
+     *
+     * @return level - 叶子深度
+     */
+    public String getLevel() {
+        return level;
+    }
+
+    /**
+     * 设置叶子深度
+     *
+     * @param level 叶子深度
+     */
+    public void setLevel(String level) {
+        this.level = level == null ? null : level.trim();
     }
 }
