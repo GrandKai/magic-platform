@@ -7,7 +7,9 @@
     -->
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="router" jdbcType="VARCHAR" property="router" />
     <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="level" jdbcType="CHAR" property="level" />
     <result column="sort_number" jdbcType="SMALLINT" property="sortNumber" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="is_show" jdbcType="CHAR" property="isShow" />
@@ -15,6 +17,5 @@
     <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="level" jdbcType="CHAR" property="level" />
   </resultMap>
 </mapper>

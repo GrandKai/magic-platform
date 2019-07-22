@@ -17,9 +17,19 @@ public class ContCatalog {
     private String name;
 
     /**
+     * 路由地址（页面跳转地址）
+     */
+    private String router;
+
+    /**
      * 栏目图片
      */
     private String image;
+
+    /**
+     * 叶子深度
+     */
+    private String level;
 
     /**
      * 排序字段
@@ -55,11 +65,6 @@ public class ContCatalog {
 
     @Column(name = "update_time")
     private Date updateTime;
-
-    /**
-     * 叶子深度
-     */
-    private String level;
 
     /**
      * 获取栏目id
@@ -98,6 +103,24 @@ public class ContCatalog {
     }
 
     /**
+     * 获取路由地址（页面跳转地址）
+     *
+     * @return router - 路由地址（页面跳转地址）
+     */
+    public String getRouter() {
+        return router;
+    }
+
+    /**
+     * 设置路由地址（页面跳转地址）
+     *
+     * @param router 路由地址（页面跳转地址）
+     */
+    public void setRouter(String router) {
+        this.router = router == null ? null : router.trim();
+    }
+
+    /**
      * 获取栏目图片
      *
      * @return image - 栏目图片
@@ -113,6 +136,24 @@ public class ContCatalog {
      */
     public void setImage(String image) {
         this.image = image == null ? null : image.trim();
+    }
+
+    /**
+     * 获取叶子深度
+     *
+     * @return level - 叶子深度
+     */
+    public String getLevel() {
+        return level;
+    }
+
+    /**
+     * 设置叶子深度
+     *
+     * @param level 叶子深度
+     */
+    public void setLevel(String level) {
+        this.level = level == null ? null : level.trim();
     }
 
     /**
@@ -231,23 +272,5 @@ public class ContCatalog {
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    /**
-     * 获取叶子深度
-     *
-     * @return level - 叶子深度
-     */
-    public String getLevel() {
-        return level;
-    }
-
-    /**
-     * 设置叶子深度
-     *
-     * @param level 叶子深度
-     */
-    public void setLevel(String level) {
-        this.level = level == null ? null : level.trim();
     }
 }

@@ -28,7 +28,7 @@ public class ContInformation {
     /**
      * 摘要
      */
-    private String sumary;
+    private String summary;
 
     /**
      * 作者
@@ -166,19 +166,19 @@ public class ContInformation {
     /**
      * 获取摘要
      *
-     * @return sumary - 摘要
+     * @return summary - 摘要
      */
-    public String getSumary() {
-        return sumary;
+    public String getSummary() {
+        return summary;
     }
 
     /**
      * 设置摘要
      *
-     * @param sumary 摘要
+     * @param summary 摘要
      */
-    public void setSumary(String sumary) {
-        this.sumary = sumary == null ? null : sumary.trim();
+    public void setSummary(String summary) {
+        this.summary = summary == null ? null : summary.trim();
     }
 
     /**

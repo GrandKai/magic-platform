@@ -9,7 +9,7 @@
     <result column="catalog_id" jdbcType="VARCHAR" property="catalogId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="cover_image" jdbcType="VARCHAR" property="coverImage" />
-    <result column="sumary" jdbcType="VARCHAR" property="sumary" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="source" jdbcType="VARCHAR" property="source" />
     <result column="source_address" jdbcType="VARCHAR" property="sourceAddress" />
