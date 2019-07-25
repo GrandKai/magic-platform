@@ -31,6 +31,13 @@ public class ContLabel {
     @Column(name = "is_deleted")
     private String isDeleted;
 
+    /**
+     * 是否显示（1，显示，0，不显示）
+
+     */
+    @Column(name = "is_show")
+    private String isShow;
+
     @Column(name = "create_time")
     private Date createTime;
 
@@ -121,6 +128,28 @@ public class ContLabel {
      */
     public void setIsDeleted(String isDeleted) {
         this.isDeleted = isDeleted == null ? null : isDeleted.trim();
+    }
+
+    /**
+     * 获取是否显示（1，显示，0，不显示）
+
+     *
+     * @return is_show - 是否显示（1，显示，0，不显示）
+
+     */
+    public String getIsShow() {
+        return isShow;
+    }
+
+    /**
+     * 设置是否显示（1，显示，0，不显示）
+
+     *
+     * @param isShow 是否显示（1，显示，0，不显示）
+
+     */
+    public void setIsShow(String isShow) {
+        this.isShow = isShow == null ? null : isShow.trim();
     }
 
     /**
