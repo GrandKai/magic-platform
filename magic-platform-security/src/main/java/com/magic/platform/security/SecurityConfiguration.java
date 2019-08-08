@@ -57,12 +57,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
+
 //    可以配置登出方法
 //    http.logout().logoutUrl("/my/logout").logoutSuccessHandler(myLogoutSuccessHandler).and()
     http.cors().and().csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and().exceptionHandling().accessDeniedHandler(customAccessDeniedHandler)
         .authenticationEntryPoint(myAuthenticationEntryPoint)
-        .and().authorizeRequests().anyRequest().authenticated()
+        .and().authorizeRequests()
+        .anyRequest().authenticated()
         .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
 
           @Override
@@ -83,8 +85,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     List<String> ignoringList = new ArrayList<>();
 
     if (securitySwitch) {
-      ignoringList.add("/**");
-    } else {
 
       if (!StringUtils.isEmpty(whiteList)) {
         String[] list = whiteList.split(",");
@@ -92,16 +92,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         if (0 < list.length) {
           ignoringList.addAll(Arrays.asList(list));
         }
-
       }
 
       List<String> staticUrls = Arrays.asList("/favicon.ico");
-      List<String> authUrls = Arrays.asList("/auth/**", "/images/**");
-      List<String> swaggerUrls = Arrays.asList("/v2/api-docs", "/csrf", "/**/*swagger*/**", "/error", "/");
+      List<String> authUrls = Arrays.asList("/auth/**");
+      List<String> swaggerUrls = Arrays.asList("/v2/api-docs", "/csrf", "/**/*swagger*/**", "/error", "/", "/images/**");
 
       ignoringList.addAll(staticUrls);
       ignoringList.addAll(authUrls);
       ignoringList.addAll(swaggerUrls);
+    } else {
+      ignoringList.add("/**");
     }
 
     web.ignoring().antMatchers(ignoringList.toArray(new String[0]));

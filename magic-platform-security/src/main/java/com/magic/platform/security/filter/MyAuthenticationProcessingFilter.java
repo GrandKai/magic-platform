@@ -13,11 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -30,6 +32,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 //s@Order(Ordered.HIGHEST_PRECEDENCE)
 @Component
 public class MyAuthenticationProcessingFilter extends OncePerRequestFilter {
+  @Value("${framework.security.white-list: ''}")
+  private String whiteList;
 
   @Autowired
   private CustomUserDetailsService userDetailsService;
@@ -102,9 +106,29 @@ public class MyAuthenticationProcessingFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+    AntPathMatcher antPathMatcher = new AntPathMatcher();
+    String path = request.getRequestURI();
+
+    // 1. 是否匹配 /auth/**
+    boolean authFlag = antPathMatcher.match("/auth/**", path);
+
+    // 2. 是否匹配白名单
+    boolean flag = false;
+    if (!StringUtils.isEmpty(whiteList) && !authFlag) {
+      String[] list = whiteList.split(",");
+      for (String whiteUrl : list) {
+        if (antPathMatcher.match(whiteUrl, path)) {
+          // 说明路径在白名单中
+          flag = true;
+          break;
+        }
+      }
+    }
+
     String authorization = request.getHeader("authorization");
 
-    if (!StringUtils.isEmpty(authorization)) {
+    if (!StringUtils.isEmpty(authorization) && !(flag || authFlag)) {
 
       String accessToken = authorization.replaceAll("Bearer ", "");
 
@@ -140,7 +164,6 @@ public class MyAuthenticationProcessingFilter extends OncePerRequestFilter {
         }
       }
     }
-
 
     filterChain.doFilter(request, response);
   }
