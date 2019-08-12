@@ -21,4 +21,8 @@ public class RedisProperties {
 
   private Integer validTimeSecondAccessToken;
   private Integer validTimeSecondRefreshToken;
+
+  private String host;
+  private Integer port;
+  private Integer database;
 }
