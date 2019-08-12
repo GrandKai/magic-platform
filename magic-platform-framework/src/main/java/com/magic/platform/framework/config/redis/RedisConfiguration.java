@@ -8,11 +8,11 @@ import java.time.Duration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -31,19 +31,17 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 @Slf4j
 @Configuration
+@EnableConfigurationProperties(RedisProperties.class)
 @ConditionalOnExpression("${framework.config.redis.enable: false}")
 public class RedisConfiguration {
 
   @Autowired
-  private Environment environment;
+  private RedisProperties redisProperties;
 
   @Bean
   public RedisConnectionFactory redisConnectionFactory() {
-    String host = environment.getProperty("spring.redis.host", "localhost");
-    String port = environment.getProperty("spring.redis.port", "6379");
-    LettuceConnectionFactory connectionFactory = new LettuceConnectionFactory(host, Integer.valueOf(port));
-
-    connectionFactory.setDatabase(3);
+    LettuceConnectionFactory connectionFactory = new LettuceConnectionFactory(redisProperties.getHost(), redisProperties.getPort());
+    connectionFactory.setDatabase(redisProperties.getDatabase());
     return connectionFactory;
   }
 
