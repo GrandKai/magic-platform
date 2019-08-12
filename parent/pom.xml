@@ -128,12 +128,6 @@
 
       <dependency>
         <groupId>org.springframework</groupId>
-        <artifactId>spring-context-support</artifactId>
-        <version>${spring.framwork.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.springframework</groupId>
         <artifactId>spring-expression</artifactId>
         <version>${spring.framwork.version}</version>
       </dependency>

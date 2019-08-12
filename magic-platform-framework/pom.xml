@@ -131,13 +131,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.magic</groupId>
-      <artifactId>magic-platform-support</artifactId>
-      <version>${project.parent.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>druid</artifactId>
       <scope>provided</scope>

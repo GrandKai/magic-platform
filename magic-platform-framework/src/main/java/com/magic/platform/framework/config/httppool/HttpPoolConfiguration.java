@@ -1,6 +1,5 @@
 package com.magic.platform.framework.config.httppool;
 
-import com.magic.platform.support.properties.HttpPoolProperties;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.config.Registry;
@@ -47,7 +46,7 @@ public class HttpPoolConfiguration {
   @Bean(name = POOL_MANAGER_NAME)
   public HttpClientConnectionManager httpClientConnectionManager() {
 
-    Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory> create()
+    Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create()
         .register("http", PlainConnectionSocketFactory.getSocketFactory())
         .register("https", SSLConnectionSocketFactory.getSocketFactory())
         .build();

@@ -143,12 +143,6 @@
       <artifactId>magic-platform-framework</artifactId>
       <version>${project.version}</version>
     </dependency>
-
-    <dependency>
-      <groupId>com.magic</groupId>
-      <artifactId>magic-platform-support</artifactId>
-      <version>${project.version}</version>
-    </dependency>
     <!-- spring boot start start -->
 
     <!--<dependency>
