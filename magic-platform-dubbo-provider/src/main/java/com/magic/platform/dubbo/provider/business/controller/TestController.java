@@ -12,6 +12,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +28,19 @@ public class TestController {
 
   @Autowired
   private OpsLogRepository opsLogRepository;
+  @Autowired
+  private RedisTemplate redisTemplate;
+
+  @GetMapping("/redis")
+  public Object redis(String key, String value) {
+
+    ValueOperations operations = redisTemplate.opsForValue();
+    operations.set(key, value);
+
+    Object result = operations.get(key);
+
+    return result;
+  }
 
   @GetMapping("/mongo")
   public String insertMongoData() {
