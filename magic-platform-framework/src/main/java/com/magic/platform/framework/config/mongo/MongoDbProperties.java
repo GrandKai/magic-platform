@@ -1,4 +1,4 @@
-package com.magic.platform.support.properties;
+package com.magic.platform.framework.config.mongo;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

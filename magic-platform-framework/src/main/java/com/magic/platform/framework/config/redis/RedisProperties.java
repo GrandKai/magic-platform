@@ -1,4 +1,4 @@
-package com.magic.platform.support.properties;
+package com.magic.platform.framework.config.redis;
 
 import lombok.Getter;
 import lombok.Setter;

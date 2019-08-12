@@ -22,7 +22,6 @@
         <module>magic-platform-dubbo</module>
         <module>magic-platform-security</module>
         <module>magic-platform-framework</module>
-        <module>magic-platform-support</module>
 
         <module>magic-platform-dubbo-provider</module>
     </modules>

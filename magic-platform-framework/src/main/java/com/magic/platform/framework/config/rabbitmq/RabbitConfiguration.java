@@ -1,6 +1,5 @@
 package com.magic.platform.framework.config.rabbitmq;
 
-import com.magic.platform.support.properties.RabbitProperties;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

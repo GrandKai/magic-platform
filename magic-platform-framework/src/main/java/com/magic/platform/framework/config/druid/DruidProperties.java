@@ -1,12 +1,11 @@
-package com.magic.platform.support.properties;
+package com.magic.platform.framework.config.druid;
 
+import java.util.Properties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-
-import java.util.Properties;
 
 /**
  * @author: GrandKai

@@ -1,7 +1,6 @@
 package com.magic.platform.framework.config.mongo;
 
 import com.magic.platform.framework.util.MongoPageHelper;
-import com.magic.platform.support.properties.MongoDbProperties;
 import com.mongodb.MongoClientURI;
 import java.net.UnknownHostException;
 import org.springframework.beans.factory.annotation.Autowired;
