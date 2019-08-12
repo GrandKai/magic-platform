@@ -19,6 +19,7 @@ import tk.mybatis.mapper.autoconfigure.MapperAutoConfiguration;
     RabbitAutoConfiguration.class,
     MongoAutoConfiguration.class,
     MongoDataAutoConfiguration.class,
+    RedisAutoConfiguration.class
 })
 public class DubboProviderApplication {
 
