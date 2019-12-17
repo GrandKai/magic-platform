@@ -1,5 +1,6 @@
 package com.magic.platform.dubbo.provider.framework.config;
 
+import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.ProviderConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
@@ -25,16 +26,16 @@ public class DubboProviderConfiguration implements DisposableBean {
   @Autowired
   private DubboProperties dubboProperties;
 
-//  /**
-//   * 当前应用配置
-//   * @return ApplicationConfig
-//   */
-//  @Bean(name = "DubboProviderApplicationConfig")
-//  public ApplicationConfig applicationConfig() {
-//    ApplicationConfig config = new ApplicationConfig();
-//    config.setName(dubboProperties.getApplicationName());
-//    return config;
-//  }
+  /**
+   * 当前应用配置
+   * @return ApplicationConfig
+   */
+  @Bean(name = "DubboProviderApplicationConfig")
+  public ApplicationConfig applicationConfig() {
+    ApplicationConfig config = new ApplicationConfig();
+    config.setName("magic-platform-dubbo-provider");
+    return config;
+  }
 //
 //  /**
 //   * 连接注册中心配置
