@@ -14,7 +14,7 @@
     <java.version>1.8</java.version>
     <springboot.version>2.1.0.RELEASE</springboot.version>
     <!--<spring.framwork.version>5.0.10.RELEASE</spring.framwork.version>-->
-    <spring.framwork.version>5.1.2.RELEASE</spring.framwork.version>
+    <spring.framwork.version>5.2.22.RELEASE</spring.framwork.version>
 
     <springfox.version>2.7.0</springfox.version>
     <swagger.version>1.5.20</swagger.version>
