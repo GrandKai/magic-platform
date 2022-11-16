@@ -24,7 +24,7 @@
     <mapper.version>3.5.3</mapper.version>
     <mysql.version>5.1.42</mysql.version>
     <mybatis.generator.version>1.3.5</mybatis.generator.version>
-    <jackson.verson>2.9.7</jackson.verson>
+    <jackson.verson>2.12.7.1</jackson.verson>
 
     <activiti.version>7.0.0.Beta5</activiti.version>
   </properties>
